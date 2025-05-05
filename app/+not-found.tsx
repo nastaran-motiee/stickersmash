@@ -1,5 +1,5 @@
-import { View, StyleSheet } from "react-native";
 import { Link, Stack } from "expo-router";
+import { StyleSheet, View } from "react-native";
 
 export default function NotFoundScreen() {
   return (
@@ -13,9 +13,6 @@ export default function NotFoundScreen() {
     </>
   );
 }
-
-function goBack() {}
-function goHome() {}
 
 const styles = StyleSheet.create({
   container: {

@@ -1,5 +1,5 @@
-import { StyleSheet, View, Pressable, Text } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 
 type Props = {
   label: string;
@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     padding: 3,
+    flex: 1,
   },
   button: {
     borderRadius: 10,

@@ -1,5 +1,5 @@
-import { StyleSheet } from "react-native";
 import { Image, type ImageSource } from "expo-image";
+import { StyleSheet } from "react-native";
 
 type Props = {
   imageSource: ImageSource;
@@ -14,6 +14,6 @@ const styles = StyleSheet.create({
     width: 320,
     height: 440,
     borderRadius: 18,
-    // flex: 1,
+    flex: 1,
   },
 });
