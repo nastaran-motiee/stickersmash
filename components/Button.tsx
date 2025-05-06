@@ -10,12 +10,7 @@ type Props = {
 export default function Button({ label, theme, onPress }: Props) {
   if (theme === "primary") {
     return (
-      <View
-        style={[
-          styles.buttonContainer,
-          { borderWidth: 4, borderColor: "#ffd33d", borderRadius: 18 },
-        ]}
-      >
+      <View style={primaryButtonContainer}>
         <Pressable
           style={[styles.button, { backgroundColor: "#fff" }]}
           onPress={onPress}
@@ -35,11 +30,8 @@ export default function Button({ label, theme, onPress }: Props) {
   }
 
   return (
-    <View style={styles.buttonContainer}>
-      <Pressable
-        style={styles.button}
-        onPress={() => alert("You pressed a button.")}
-      >
+    <View style={styles.container}>
+      <Pressable style={styles.button} onPress={onPress}>
         <Text style={styles.buttonLabel}>{label}</Text>
       </Pressable>
     </View>
@@ -47,7 +39,7 @@ export default function Button({ label, theme, onPress }: Props) {
 }
 
 const styles = StyleSheet.create({
-  buttonContainer: {
+  container: {
     width: 320,
     height: 68,
     marginHorizontal: 20,
@@ -55,6 +47,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     padding: 3,
     flex: 1,
+  },
+  primaryContainer: {
+    borderWidth: 4,
+    borderColor: "#ffd33d",
+    borderRadius: 18,
   },
   button: {
     borderRadius: 10,
@@ -72,3 +69,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
 });
+
+const primaryButtonContainer = StyleSheet.flatten([
+  styles.container,
+  styles.primaryContainer,
+]);
