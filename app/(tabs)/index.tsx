@@ -11,7 +11,6 @@ import * as ImagePicker from "expo-image-picker";
 import * as MediaLibrary from "expo-media-library";
 import { useEffect, useRef, useState } from "react";
 import { Platform, StyleSheet, View } from "react-native";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { captureRef } from "react-native-view-shot";
 
 const PlaceholderImage = require("@/assets/images/background-image.png");
@@ -70,15 +69,13 @@ export default function Index() {
           height: 440,
           quality: 1,
         });
-
         await MediaLibrary.saveToLibraryAsync(localUri);
-        if (localUri) {
-          alert("Saved!");
-        }
+        if (localUri) alert("Saved!");
       } catch (e) {
         console.log(e);
       }
     } else {
+      if (imageRef.current === null) return;
       try {
         const node = imageRef.current as unknown as HTMLElement;
         const dataUrl = await domtoimage.toJpeg(node, {
@@ -98,7 +95,7 @@ export default function Index() {
   };
 
   return (
-    <GestureHandlerRootView style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.imageContainer}>
         <View ref={imageRef} collapsable={false}>
           <ImageViewer imageSource={selectedImage} />
@@ -130,7 +127,7 @@ export default function Index() {
       <EmojiPicker isVisible={isModalVisible} onClose={onModalClose}>
         <EmojiList onSelect={setPickedEmoji} onCloseModal={onModalClose} />
       </EmojiPicker>
-    </GestureHandlerRootView>
+    </View>
   );
 }
 
